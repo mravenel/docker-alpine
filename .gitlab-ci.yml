@@ -1,0 +1,14 @@
+image: alpine
+
+stages:
+  - mirror
+  
+github-mirror:
+  stage: mirror
+  script:
+  - echo $CI_REPOSITORY_URL
+  - apk --no-cache add git
+  - cd /tmp
+  - git clone --mirror $CI_REPOSITORY_URL
+  - cd docker-alpine.git
+  - git push --mirror https://$GITHUB_ACCESS_TOKEN@github.com/mravenel/docker-alpine.git
