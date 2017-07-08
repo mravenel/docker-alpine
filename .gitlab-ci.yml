@@ -6,7 +6,6 @@ stages:
 github-mirror:
   stage: mirror
   script:
-  - echo $CI_REPOSITORY_URL
   - cd /tmp
   - git clone --mirror $CI_REPOSITORY_URL
   - cd docker-alpine.git
